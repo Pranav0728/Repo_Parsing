@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+neo4j
+pydantic
+langchain_core 
+PyGithub     
+GitPython
+gitingest
