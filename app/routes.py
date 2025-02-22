@@ -15,9 +15,9 @@ async def parse_github_repo(request: RepoStructureRequest, db: Session = Depends
 
         summary, directory_structure, additional_data = await ingest_async(request.path)
 
-        print("Repository Summary:", summary)
-        print("Directory Structure:", directory_structure)
-        print("Additional Data:", additional_data)
+        # print("Repository Summary:", summary)
+        # print("Directory Structure:", directory_structure)
+        # print("Additional Data:", additional_data)
 
         if not directory_structure.strip():
             raise HTTPException(
@@ -30,11 +30,11 @@ async def parse_github_repo(request: RepoStructureRequest, db: Session = Depends
             "directory_structure": directory_structure.strip(),
             "repo_code": additional_data.strip()
         }
-        print("Structured Repository Data:", repo_data)
+        # print("Structured Repository Data:", repo_data)
 
         # Insert into Neo4j and capture the returned repository id.
         result = insert_repo_structure(repo_data)
-        print("Neo4j Insertion Result:", result)
+        # print("Neo4j Insertion Result:", result)
 
         return {
             "status": "success",
